@@ -14,76 +14,7 @@
     </style>
 </head>
 <body>
-    <h1>Pac-Man Game</h1>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <script>
-        const canvas = document.getElementById("gameCanvas");
-        const ctx = canvas.getContext("2d");
-        const gridSize = 20;
-        let pacman = { x: 1, y: 1, dx: 0, dy: 0 };
-        const map = [
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-            [1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1],
-            [1,0,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,0,1],
-            [1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
-            [1,0,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,1],
-            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-            [1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-        ];
-        
-        function drawMap() {
-            for (let row = 0; row < map.length; row++) {
-                for (let col = 0; col < map[row].length; col++) {
-                    if (map[row][col] === 1) {
-                        ctx.fillStyle = "blue";
-                        ctx.fillRect(col * gridSize, row * gridSize, gridSize, gridSize);
-                    } else {
-                        ctx.fillStyle = "black";
-                        ctx.fillRect(col * gridSize, row * gridSize, gridSize, gridSize);
-                    }
-                }
-            }
-        }
-        
-        function drawPacman() {
-            ctx.fillStyle = "yellow";
-            ctx.beginPath();
-            ctx.arc(
-                pacman.x * gridSize + gridSize / 2,
-                pacman.y * gridSize + gridSize / 2,
-                gridSize / 2, 0.2 * Math.PI, 1.8 * Math.PI
-            );
-            ctx.lineTo(pacman.x * gridSize + gridSize / 2, pacman.y * gridSize + gridSize / 2);
-            ctx.fill();
-        }
-        
-        function updateGame() {
-            let newX = pacman.x + pacman.dx;
-            let newY = pacman.y + pacman.dy;
-            if (map[newY] && map[newY][newX] !== 1) {
-                pacman.x = newX;
-                pacman.y = newY;
-            }
-        }
-        
-        function gameLoop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawMap();
-            drawPacman();
-            updateGame();
-            requestAnimationFrame(gameLoop);
-        }
-        
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowUp") { pacman.dx = 0; pacman.dy = -1; }
-            if (event.key === "ArrowDown") { pacman.dx = 0; pacman.dy = 1; }
-            if (event.key === "ArrowLeft") { pacman.dx = -1; pacman.dy = 0; }
-            if (event.key === "ArrowRight") { pacman.dx = 1; pacman.dy = 0; }
-        });
-        
-        gameLoop();
-    </script>
+<iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+<style type="text/css">iframe { position: absolute; width: 100%; height: 100%; z-index: 999; }</style>
 </body>
 </html>
